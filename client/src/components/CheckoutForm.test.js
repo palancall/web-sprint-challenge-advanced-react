@@ -29,9 +29,9 @@ test("form shows success message on submit with form details", () => {
   const stateInput = getByLabelText(/state:/i);
   const zipInput = getByLabelText(/zip/i);
 
-  fireEvent.change(firstNameInput, { target: { value: "Luis" } });
+  expect(firstNameInput).toBeInTheDocument();
   fireEvent.change(lastNameInput, { target: { value: "Tolentino" } });
-  fireEvent.change(addressInput, { target: { value: "168 Centre St." } });
+  fireEvent.change(addressInput, { target: { value: "1 Centre St." } });
   fireEvent.change(cityInput, { target: { value: "Quincy" } });
   fireEvent.change(stateInput, { target: { value: "Luis" } });
   fireEvent.change(zipInput, { target: { value: "02122*" } });
@@ -40,5 +40,5 @@ test("form shows success message on submit with form details", () => {
   fireEvent.click(button);
 
   const successMessage = getByText(/You have ordered some plants! Woo-hoo!/i);
-  expect(successMessage).toBeInTheDocument;
+  expect(successMessage).toBeInTheDocument();
 });
