@@ -10,6 +10,7 @@ import "./App.css";
 function App() {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
+  const [search, setSearch] = useState("");
 
   // add a plant to the cart
   const addToCart = (plant) => {
@@ -28,6 +29,11 @@ function App() {
           <h1>
             React Plants <span role="img">🌿</span>
           </h1>
+          <input
+            type="text"
+            className="search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <ul className="steps">
             <li>
               <NavLink exact to="/">
@@ -47,7 +53,7 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => <PlantList addToCart={addToCart} />}
+          render={() => <PlantList addToCart={addToCart} search={search} />}
         />
         <Route
           path="/cart"
