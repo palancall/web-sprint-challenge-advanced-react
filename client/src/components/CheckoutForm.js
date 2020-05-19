@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "../hooks/useForm";
 
 const initialValue = {
@@ -15,10 +15,13 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  // const [showSuccessMessage, setShowSuccessMessage] = useForm(false);
-  const [values, handleChanges, showSuccessMessage, handleSubmit] = useForm(
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [values, handleChanges, handleSubmit] = useForm(
     initialValue,
-    "contact-form"
+    "contact-form",
+    () => {
+      setShowSuccessMessage(true);
+    }
   );
 
   // const handleChanges = (e) => {
